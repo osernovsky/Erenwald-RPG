@@ -1,1 +1,44 @@
+# Local Codex instructions (intentionally not published)
 /AGENTS.md
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_ed25519
+id_rsa
+
+# Local game databases and SQLite sidecars
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+*.db-wal
+*.db-shm
+/data/
+/saves/
+
+# Go binaries, build artifacts and coverage
+/bin/
+/build/
+/dist/
+*.test
+*.out
+coverage*.txt
+
+# Editors and temporary files
+.idea/
+*.swp
+*.swo
+*~
