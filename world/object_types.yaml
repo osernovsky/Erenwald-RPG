@@ -1,0 +1,31 @@
+schema_version: 1
+types:
+  wooden_box:
+    components:
+      container: {}
+      openable:
+        initial:
+          is_open: false
+      portable: {}
+      breakable: {}
+
+  book:
+    components:
+      portable: {}
+      readable:
+        config:
+          text: "Страницы ещё пусты."
+
+  key:
+    components:
+      portable: {}
+      usable:
+        config:
+          action: unlock
+          key_code: demo_iron
+
+  door:
+    components:
+      openable:
+        initial:
+          is_open: false

@@ -1,0 +1,34 @@
+schema_version: 1
+id: location.demo.store
+name: "Кладовая"
+descriptions:
+  first_visit: "На полках лежат свёрнутые полотнища."
+  revisit: "В кладовой по-прежнему пахнет сухим деревом."
+objects:
+  - id: obj.store.door
+    type: door
+    name: "Заслонка"
+    description: "Деревянная заслонка скользит по двум пазам."
+  - id: obj.store.spare_key
+    type: key
+    name: "Запасной ключ"
+    description: "Ключ лежит под свёрнутым полотнищем."
+    perception:
+      mode: search
+actors:
+  - id: actor.store.dummy
+    role: enemy
+    name: "Сторожевой манекен"
+    description: "Деревянный манекен прислонён к дальней стене."
+exits:
+  - id: exit.store.west
+    name: "На запад"
+    aliases: ["запад"]
+    to: location.demo.entry
+    available_when:
+      - kind: state_is
+        target: obj.store.door
+        component: openable
+        field: is_open
+        value: true
+    blocked_text: "Проход пока закрыт заслонкой."

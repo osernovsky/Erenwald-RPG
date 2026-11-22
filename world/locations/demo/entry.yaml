@@ -1,0 +1,52 @@
+schema_version: 1
+id: location.demo.entry
+name: "Приёмная"
+descriptions:
+  first_visit: "Вдоль стен тянется низкая деревянная обшивка."
+  revisit: "Под ногами поскрипывают доски."
+objects:
+  - id: obj.entry.box
+    type: wooden_box
+    name: "Деревянный ящик"
+    aliases: ["ящик", "короб"]
+    contents:
+      - id: obj.entry.book
+        type: book
+        name: "Тетрадь"
+        overrides:
+          readable:
+            config:
+              text: "Ключи хранят в сухом месте."
+      - id: obj.entry.key
+        type: key
+        name: "Железный ключ"
+actors:
+  - id: actor.entry.keeper
+    role: npc
+    name: "Смотритель"
+    description: "Смотритель сидит у стены."
+exits:
+  - id: exit.entry.east
+    name: "На восток"
+    aliases: ["восток"]
+    to: location.demo.store
+    available_when:
+      - kind: state_is
+        target: obj.store.door
+        component: openable
+        field: is_open
+        value: true
+    blocked_text: "Проход пока закрыт заслонкой."
+events:
+  - id: event.entry.lift_door
+    trigger:
+      action: open
+      target: obj.entry.box
+    once: true
+    effects:
+      - kind: set_component_state
+        target: obj.store.door
+        component: openable
+        field: is_open
+        value: true
+    message: "Внутри ящика щёлкает тяга. В восточном проходе поднимается заслонка."
